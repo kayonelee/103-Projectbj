@@ -5,25 +5,26 @@ public class Card {
     private Suits suit;
     private Values value;
 
-    // create arrays for values and suits - need these to generate random cards
+    //CREATE ARRAYS FOR VALUES AND SUITS-NEED THIS IN ORDER TO GENERATE RANDOM CARDS
     private Values[] values = Values.values();
     private Random randomValues = new Random();
     private Suits[] suits = Suits.values();
     private Random randomSuits = new Random();
 
+    //CONSTRUCTOR
     public Card(Suits suit, Values value) {
         this.value = value;
         this.suit = suit;
     }
 
-    // random card generated
-    public Card() {
-        this.suit = getRandomSuit();
-        this.value = getRandomValue();
+    //RANDOM CARD GENERATED
+    public Card(Card card) {
+        this.suit = card.getRandomSuit();
+        this.value = card.getRandomValue();
     }
 
-    public String toString() {
-        return this.suit.toString() + "-" + this.value.toString();
+    public Suits getSuit() {
+        return this.suit;
     }
 
     public Values getValue() {
@@ -36,5 +37,10 @@ public class Card {
 
     public Suits getRandomSuit() {
         return suits[randomSuits.nextInt(values.length)];
+    }
+
+    //RETURN SUIT AND VALUE
+    public String toString() {
+        return this.suit.toString() + "-" + this.value.toString();
     }
 }
